@@ -8,6 +8,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { SteemconnectAuthService } from '../../steemconnect/services/steemconnect-auth.service';
+import { SteemKeychainService } from '@steeveproject/ngx-steem-keychain'
 import {environment} from '../../../environments/environment';
 import { AuthGuard } from 'src/guards/auth-guard.service';
 
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     username: ''
   };
   
-  constructor(public auth: SteemconnectAuthService, @Inject(DOCUMENT) private document: Document) { }
+  constructor(public auth: SteemconnectAuthService, private steemKeychain: SteemKeychainService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
   }
@@ -32,7 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginWithKeychain() {
-    //DO SC2 Login
+    //DO Keychain Login
+    console.log("callled");
+    this.steemKeychain.requestHandshake();
   }
 
 }
