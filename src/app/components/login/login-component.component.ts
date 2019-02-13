@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   //      //Called when operation is complete (both success and error)
   //      console.log("done")
   // });
-  this.steemKeychain.requestVerifyKey('anlptl','smmsg','Active')
+  this.steemKeychain.requestVerifyKey(this.userData.username,'smmsg','Active')
   .subscribe(
     (data) => {
        //Called when success
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
   ).add(() => {
        //Called when operation is complete (both success and error)
        console.log("done")
-       this.steemKeychain.requestSignBuffer('anlptl','smmsg','Active')
+       this.steemKeychain.requestSignBuffer(this.userData.username,'smmsg','Active')
   .subscribe(
     (data) => {
        //Called when success
